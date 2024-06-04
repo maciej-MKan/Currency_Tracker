@@ -29,6 +29,6 @@ public class CurrencyController {
 
     @GetMapping("/requests")
     public ResponseEntity<List<RequestDTO>> getAllRequests(){
-        return requestService.getAll();
+        return ResponseEntity.ok(requestService.getAll());
     }
 }
