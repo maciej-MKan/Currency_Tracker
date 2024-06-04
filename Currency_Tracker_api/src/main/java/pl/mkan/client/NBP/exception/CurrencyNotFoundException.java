@@ -1,4 +1,4 @@
-package pl.mkan.persistance.NBP.exception;
+package pl.mkan.client.NBP.exception;
 
 public class CurrencyNotFoundException extends RuntimeException {
     public CurrencyNotFoundException(String message) {

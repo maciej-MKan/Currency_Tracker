@@ -1,4 +1,4 @@
-package pl.mkan.persistance.NBP;
+package pl.mkan.client.NBP;
 
 import java.util.List;
 

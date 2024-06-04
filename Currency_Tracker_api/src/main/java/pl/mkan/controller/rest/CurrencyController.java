@@ -22,8 +22,9 @@ public class CurrencyController {
 
     @PostMapping("/get-current-currency-value-command")
     public ResponseEntity<CurrencyResponseDTO> getCurrentCurrencyValue(@RequestBody CurrencyRequestDTO request) {
-        requestService.saveRequest(request);
-        return ResponseEntity.ok(currencyService.getValue(request));
+        CurrencyResponseDTO responseDTO = currencyService.getValue(request);
+        requestService.saveRequest(request, responseDTO.value());
+        return ResponseEntity.ok(responseDTO);
     }
 
     @GetMapping("/requests")

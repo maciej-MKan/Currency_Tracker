@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "requests")
 public class CurrencyRequestEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +19,5 @@ public class CurrencyRequestEntity {
     private String currency;
     private String name;
     private LocalDateTime date;
-    private double value;
+    private double mid;
 }
