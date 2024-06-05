@@ -20,10 +20,11 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class WebClientConfiguration {
+    @Value("${nbp-api.timeout}")
+    private int TIMEOUT;
 
-    @Value("${api.url}")
+    @Value("${nbp-api.url}")
     private String url;
-    public static final int TIMEOUT = 5000; // 5 sec
 
     @Bean
     public WebClient webClient(final ObjectMapper objectMapper) {

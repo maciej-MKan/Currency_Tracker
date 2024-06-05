@@ -1,7 +1,8 @@
-api:
+nbp-api:
   url: https://api.nbp.pl
   currency:
     uri: /api/exchangerates/rates/A/
+  timeout: 5000
 
 spring:
   datasource:

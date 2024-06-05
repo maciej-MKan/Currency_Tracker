@@ -3,10 +3,11 @@ package pl.mkan.controller.rest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.mkan.controller.dto.CurrencyRequestDTO;
-import pl.mkan.controller.dto.CurrencyResponseDTO;
-import pl.mkan.controller.dto.RequestDTO;
-import pl.mkan.service.CurrencyService;
+import pl.mkan.controller.dto.CurrencyRateRequest;
+import pl.mkan.controller.dto.CurrencyRate;
+import pl.mkan.controller.dto.HistoricalCurrencyRate;
+import pl.mkan.service.CurrencyProvider;
+import pl.mkan.service.NBPCurrencyProvider;
 import pl.mkan.service.RequestService;
 
 import java.util.List;
@@ -17,18 +18,19 @@ import java.util.List;
 public class CurrencyController {
 
     public static final String API_PATH = "/currencies";
-    private final CurrencyService currencyService;
+
+    private final CurrencyProvider currencyProvider;
     private final RequestService requestService;
 
     @PostMapping("/get-current-currency-value-command")
-    public ResponseEntity<CurrencyResponseDTO> getCurrentCurrencyValue(@RequestBody CurrencyRequestDTO request) {
-        CurrencyResponseDTO responseDTO = currencyService.getValue(request);
+    public ResponseEntity<CurrencyRate> getCurrentCurrencyValue(@RequestBody CurrencyRateRequest request) {
+        CurrencyRate responseDTO = currencyProvider.fetchCurrencyRate(request.currency());
         requestService.saveRequest(request, responseDTO.value());
         return ResponseEntity.ok(responseDTO);
     }
 
     @GetMapping("/requests")
-    public ResponseEntity<List<RequestDTO>> getAllRequests(){
+    public ResponseEntity<List<HistoricalCurrencyRate>> getAllRequests(){
         return ResponseEntity.ok(requestService.getAll());
     }
 }

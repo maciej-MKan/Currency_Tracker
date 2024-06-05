@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class NBPCurrencyClient {
 
     private final WebClient webClient;
-    @Value("${api.currency.uri}")
+    @Value("${nbp-api.currency.uri}")
     private String currencyUri;
 
     public Double getCurrencyValue(String currencyCode) {
