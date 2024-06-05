@@ -1,7 +1,12 @@
 package pl.mkan.persistance.database.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -23,5 +28,16 @@ public class CurrencyRequestEntity {
         this.fetcherName = fetcherName;
         this.fetchDate = fetchDate;
         this.currencyValue = currencyValue;
+    }
+
+    @Override
+    public String toString() {
+        return "CurrencyRequestEntity{" +
+                "id=" + id +
+                ", currencyCode='" + currencyCode + '\'' +
+                ", fetcherName='" + fetcherName + '\'' +
+                ", fetchDate=" + fetchDate +
+                ", currencyValue=" + currencyValue +
+                '}';
     }
 }
