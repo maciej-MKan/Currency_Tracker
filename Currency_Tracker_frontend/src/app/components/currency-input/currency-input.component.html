@@ -1,0 +1,15 @@
+<form (ngSubmit)="getCurrencyValue()">
+  <div>
+    <label for="currency">Kod waluty:</label>
+    <input id="currency" [(ngModel)]="currency" name="currency" required>
+  </div>
+  <div>
+    <label for="name">Imię i nazwisko:</label>
+    <input id="name" [(ngModel)]="name" name="name" required>
+  </div>
+  <button type="submit">Sprawdź kurs</button>
+</form>
+
+<div *ngIf="result" class="result">
+  <p>Aktualny kurs: {{ result.value }}</p>
+</div>

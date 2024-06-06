@@ -1,0 +1,9 @@
+<div class="requests">
+  <h2>Historia zapytań</h2>
+  <div *ngFor="let request of requests" class="request-item">
+    <p><strong>Waluta:</strong> {{ request.currency }}</p>
+    <p><strong>Imię i nazwisko:</strong> {{ request.name }}</p>
+    <p><strong>Data:</strong> {{ request.date | date:'medium' }}</p>
+    <p><strong>Kurs:</strong> {{ request.value }}</p>
+  </div>
+</div>
