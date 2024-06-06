@@ -4,6 +4,12 @@ nbp-api:
     uri: /api/exchangerates/rates/A/
   timeout: 5000
 
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  front: http://localhost:4200
+
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
