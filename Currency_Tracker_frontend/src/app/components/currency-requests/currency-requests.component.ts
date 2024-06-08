@@ -16,8 +16,9 @@ export class CurrencyRequestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencyService.getAllRequests().subscribe(
-      data => this.requests = data,
-      error => alert('Wystąpił błąd: ' + error.message)
+       (data) => this.requests = data,
+      (error) => alert('Wystąpił błąd: ' + error.message),
+      () => console.info('complete')
     );
   }
 }
