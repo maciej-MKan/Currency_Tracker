@@ -8,7 +8,7 @@ import { Request } from '../models/request.model';
 })
 export class CurrencyService {
 
-  private apiUrl = 'http://localhost:8080/currencies'; // URL do twojego backendu
+  private apiUrl = 'http://localhost:8080/currencies';
 
   constructor(private http: HttpClient) { }
 

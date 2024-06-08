@@ -1,27 +1,24 @@
-<hr>
-<div>
+<div class="container">
   <h2>Request History</h2>
-  <div>
-    <label>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary" [class.active]="filter === 'all'">
       <input type="radio" name="filter" (click)="setFilter('all')" [checked]="filter === 'all'"> All
     </label>
-    <label>
+    <label class="btn btn-secondary" [class.active]="filter === 'hour'">
       <input type="radio" name="filter" (click)="setFilter('hour')" [checked]="filter === 'hour'"> Last Hour
     </label>
-    <label>
+    <label class="btn btn-secondary" [class.active]="filter === 'day'">
       <input type="radio" name="filter" (click)="setFilter('day')" [checked]="filter === 'day'"> Last Day
     </label>
-    <label>
+    <label class="btn btn-secondary" [class.active]="filter === 'week'">
       <input type="radio" name="filter" (click)="setFilter('week')" [checked]="filter === 'week'"> Last Week
     </label>
   </div>
-  <hr>
-  <div class="request-list">
-    <ul>
-      <li *ngFor="let request of filteredRequests">
-        {{ request.date | date:'medium'}} - {{ request.name }} || {{ request.currency }} : {{ request.value }}
+  <div class="request-list mt-3">
+    <ul class="list-group">
+      <li *ngFor="let request of filteredRequests" class="list-group-item">
+        {{ request.date | date:'medium'}} - {{ request.name }} || {{ request.currency | uppercase}} : {{ request.value }}
       </li>
     </ul>
   </div>
-  <hr>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CurrencyService } from "../../services/currency.service";
-import { DatePipe, NgForOf } from "@angular/common";
+import { DatePipe, NgForOf, UpperCasePipe } from "@angular/common";
 import { Request } from '../../models/request.model';
 import { CommunicationService } from "../../services/communication.service";
 import { Subscription } from "rxjs";
@@ -10,7 +10,8 @@ import { Subscription } from "rxjs";
   standalone: true,
   imports: [
     NgForOf,
-    DatePipe
+    DatePipe,
+    UpperCasePipe
   ],
   templateUrl: './request-list.component.html',
   styleUrl: './request-list.component.css'
