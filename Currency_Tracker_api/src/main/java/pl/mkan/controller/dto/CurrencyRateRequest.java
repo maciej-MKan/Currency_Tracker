@@ -1,4 +1,6 @@
 package pl.mkan.controller.dto;
 
-public record CurrencyRateRequest(String currency, String name) {
+import jakarta.validation.constraints.NotEmpty;
+
+public record CurrencyRateRequest(@NotEmpty String currency, @NotEmpty String name) {
 }

@@ -7,32 +7,22 @@
 }
 
 .result {
-  padding: 1rem;
+  font-size: x-large;
+  padding: 2rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-button{
+button {
   margin-top: 10px;
 }
 
 button[disabled] {
-  cursor: not-allowed;
-  background-color: #ddd;
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
-button[title]:hover::after {
-  content: attr(title);
-  position: absolute;
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  z-index: 1000;
+a[title]:hover {
+  cursor: not-allowed;
 }

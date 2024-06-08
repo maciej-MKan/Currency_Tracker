@@ -1,5 +1,6 @@
 package pl.mkan.controller.rest;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class CurrencyController {
     private final RequestService requestService;
 
     @PostMapping("/get-current-currency-value-command")
-    public ResponseEntity<CurrencyRate> getCurrentCurrencyValue(@RequestBody CurrencyRateRequest request) {
+    public ResponseEntity<CurrencyRate> getCurrentCurrencyValue(@Valid @RequestBody CurrencyRateRequest request) {
         log.info("Get current currency value request: {}", request);
         CurrencyRate responseDTO = currencyProvider.fetchCurrencyRate(request.currency());
         requestService.saveRequest(request, responseDTO.value());

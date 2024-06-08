@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <form (ngSubmit)="getCurrencyValue()" class="currency-form">
         <div class="form-group">
           <label for="currency">Currency code</label>
@@ -10,13 +10,15 @@
           <label for="name">Your name</label>
           <input id="name" [(ngModel)]="name" name="name" required class="form-control" (input)="onNameChange()">
         </div>
-        <button type="submit" [disabled]="!currency || !name" class="btn btn-primary" [title]="!currency || !name ? 'Fill in all fields' : ''">
+        <a [title]="!currency || !name ? 'Fill in all fields' : ''">
+          <button type="submit" class="btn btn-primary" [disabled]="!currency || !name">
           Get Currency Value
-        </button>
+          </button>
+        </a>
       </form>
     </div>
-    <div class="col-md-6 d-flex align-items-center">
-      <div *ngIf="result" class="result ml-3">
+    <div class="col-md-7 d-flex align-items-center">
+      <div *ngIf="result" class="result ml-6">
         {{ result }}
       </div>
     </div>

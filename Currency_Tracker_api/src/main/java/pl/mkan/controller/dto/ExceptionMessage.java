@@ -1,4 +1,4 @@
 package pl.mkan.controller.dto;
 
-public record ExceptionMessage(String errorId) {
+public record ExceptionMessage(String errorId, String message) {
 }

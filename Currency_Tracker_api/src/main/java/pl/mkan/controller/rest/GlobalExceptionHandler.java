@@ -6,7 +6,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.lang.NonNull;
+import org.springframework.validation.method.MethodValidationException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -40,7 +43,46 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     ) {
         final String errorId = UUID.randomUUID().toString();
         log.error("Exception: ID={}, HttpStatus={}", errorId, statusCode, ex);
-        return super.handleExceptionInternal(ex, new ExceptionMessage(errorId), headers, statusCode, request);
+        return super.handleExceptionInternal(
+                ex,
+                new ExceptionMessage(errorId, "Other error. Please contact with system administrator"),
+                headers,
+                statusCode,
+                request
+        );
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodValidationException(
+            @NonNull MethodValidationException ex,
+            @NonNull HttpHeaders headers,
+            @NonNull HttpStatus status,
+            @NonNull WebRequest request) {
+        final String errorId = UUID.randomUUID().toString();
+        log.error("Exception: ID={}, HttpStatus={}", errorId, status, ex);
+        return ResponseEntity.badRequest().body(new ExceptionMessage(errorId, ex.getMessage()));
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            @NonNull MethodArgumentNotValidException ex,
+            @NonNull HttpHeaders headers,
+            @NonNull HttpStatusCode status,
+            @NonNull WebRequest request) {
+        final String errorId = UUID.randomUUID().toString();
+        log.error("Exception: ID={}, HttpStatus={}", errorId, status, ex);
+        return ResponseEntity.badRequest().body(new ExceptionMessage(errorId, "Validation error"));
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(
+            @NonNull HttpMessageNotReadableException ex,
+            @NonNull HttpHeaders headers,
+            @NonNull HttpStatusCode status,
+            @NonNull WebRequest request) {
+        final String errorId = UUID.randomUUID().toString();
+        log.error("Exception: ID={}, HttpStatus={}", errorId, status, ex);
+        return ResponseEntity.badRequest().body(new ExceptionMessage(errorId, "Bad request"));
     }
 
     @ExceptionHandler(Exception.class)
@@ -55,7 +97,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(status)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ExceptionMessage(errorId));
+                .body(new ExceptionMessage(errorId, exception.getMessage()));
     }
 
     public HttpStatus getHttpStatusFromException(final Class<?> exception) {

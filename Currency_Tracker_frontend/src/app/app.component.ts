@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CurrencyInputComponent } from "./components/currency-input/currency-input.component";
-import { CurrencyRequestsComponent } from "./components/currency-requests/currency-requests.component";
 import { RequestListComponent } from "./components/request-list/request-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CurrencyInputComponent, CurrencyRequestsComponent, RequestListComponent],
+  imports: [RouterOutlet, CurrencyInputComponent, RequestListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
