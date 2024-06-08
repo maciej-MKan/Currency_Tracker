@@ -1,0 +1,15 @@
+.request-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.request-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.request-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}

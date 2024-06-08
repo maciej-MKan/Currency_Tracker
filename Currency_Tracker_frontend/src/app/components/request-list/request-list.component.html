@@ -1,0 +1,27 @@
+<hr>
+<div>
+  <h2>Request History</h2>
+  <div>
+    <label>
+      <input type="radio" name="filter" (click)="setFilter('all')" [checked]="filter === 'all'"> All
+    </label>
+    <label>
+      <input type="radio" name="filter" (click)="setFilter('hour')" [checked]="filter === 'hour'"> Last Hour
+    </label>
+    <label>
+      <input type="radio" name="filter" (click)="setFilter('day')" [checked]="filter === 'day'"> Last Day
+    </label>
+    <label>
+      <input type="radio" name="filter" (click)="setFilter('week')" [checked]="filter === 'week'"> Last Week
+    </label>
+  </div>
+  <hr>
+  <div class="request-list">
+    <ul>
+      <li *ngFor="let request of filteredRequests">
+        {{ request.date | date:'medium'}} - {{ request.name }} || {{ request.currency }} : {{ request.value }}
+      </li>
+    </ul>
+  </div>
+  <hr>
+</div>
