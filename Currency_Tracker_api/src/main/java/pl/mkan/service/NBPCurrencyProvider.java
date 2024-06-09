@@ -9,7 +9,7 @@ import pl.mkan.controller.dto.CurrencyRate;
 @Slf4j
 @AllArgsConstructor
 @Service
-public class NBPCurrencyProvider implements CurrencyProvider{
+public class NBPCurrencyProvider implements CurrencyProvider {
 
     private final NBPCurrencyClient nbpClient;
 

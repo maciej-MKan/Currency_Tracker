@@ -20,11 +20,13 @@ import java.util.List;
 public class CurrencyController {
 
     public static final String API_PATH = "/currencies";
+    public static final String REQUEST_PATH = "/requests";
+    public static final String CURRENCY_VALUE_PATH = "/get-current-currency-value-command";
 
     private final CurrencyProvider currencyProvider;
     private final RequestService requestService;
 
-    @PostMapping("/get-current-currency-value-command")
+    @PostMapping(CURRENCY_VALUE_PATH)
     public ResponseEntity<CurrencyRate> getCurrentCurrencyValue(@Valid @RequestBody CurrencyRateRequest request) {
         log.info("Get current currency value request: {}", request);
         CurrencyRate responseDTO = currencyProvider.fetchCurrencyRate(request.currency());
@@ -32,7 +34,7 @@ public class CurrencyController {
         return ResponseEntity.ok(responseDTO);
     }
 
-    @GetMapping("/requests")
+    @GetMapping(REQUEST_PATH)
     public ResponseEntity<List<HistoricalCurrencyRate>> getAllRequests() {
         log.info("Get current requests");
         return ResponseEntity.ok(requestService.getAll());
