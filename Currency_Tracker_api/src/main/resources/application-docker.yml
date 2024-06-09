@@ -1,0 +1,27 @@
+nbp-api:
+  url: https://api.nbp.pl
+  currency:
+    uri: /api/exchangerates/rates/A/
+  timeout: 5000
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  front: http://localhost:4200
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/currency
+    username:
+    password:
+    hikari:
+      idle-timeout: 10000
+      connectionTimeout: 20000
+      minimumIdle: 10
+      maximumPoolSize: 20
+  jpa:
+    hibernate:
+      ddl-auto: update
