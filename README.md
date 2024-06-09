@@ -22,7 +22,7 @@ A web application that allows users to check currency values by code from the NB
 4. Run Docker Compose to start the application (docker compose is required):
    ```docker compose up```
 5. Open your browser and navigate to localhost:3000:
-   ```http://localhost:3000```
+
 
 ## API Endpoints
 ### POST /currencies/get-current-currency-value-command
@@ -76,4 +76,3 @@ Response:
 ## License
 
 This project is licensed under the MIT License. For more information, see the [LICENSE](https://github.com/maciej-MKan/chess/blob/main/LICENSE) file.
-
