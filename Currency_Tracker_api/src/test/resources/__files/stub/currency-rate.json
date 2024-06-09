@@ -1,0 +1,12 @@
+{
+  "table": "A",
+  "currency": "euro",
+  "code": "EUR",
+  "rates": [
+    {
+      "no": "107/A/NBP/2024",
+      "effectiveDate": "2024-06-04",
+      "mid": "{{parameters.value}}"
+    }
+  ]
+}

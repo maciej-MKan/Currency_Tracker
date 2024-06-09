@@ -1,0 +1,51 @@
+networks:
+  inter-network:
+    driver: bridge
+
+services:
+
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - "5433:5432"
+    networks:
+      - inter-network
+
+  backend-java:
+    build:
+      context: ./Currency_Tracker_api
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8089:8080"
+    networks:
+      - inter-network
+    env_file:
+      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+      server.front: "http://localhost:3000"
+      spring.datasource.username: ${DB_USER}
+      spring.datasource.password: ${DB_PASS}
+
+  frontend-angular:
+    build:
+      context: ./Currency_Tracker_frontend
+      args:
+        VITE_BACKEND_URI: "http://localhost:8089"
+      dockerfile: Dockerfile
+    environment:
+      apiUrl: "http://localhost:8089"
+    depends_on:
+      - backend-java
+    ports: 
+      - 3000:4200
+    networks:
+      - inter-network
