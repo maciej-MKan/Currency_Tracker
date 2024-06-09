@@ -9,7 +9,7 @@ import pl.mkan.persistance.database.model.CurrencyRequestEntity;
 import pl.mkan.persistance.database.model.mapper.CurrencyRequestMapper;
 import pl.mkan.persistance.database.repository.CurrencyRequestRepository;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Slf4j
@@ -22,7 +22,7 @@ public class RequestService {
 
     public CurrencyRequestEntity saveRequest(CurrencyRateRequest request, double currencyRate) {
         log.info("Saving fetched currencyCode currencyValue for request: {}, currencyValue: {}", request, currencyRate);
-        return repository.save(mapper.toEntity(request, LocalDateTime.now(), currencyRate));
+        return repository.save(mapper.toEntity(request, ZonedDateTime.now(), currencyRate));
     }
 
     public List<HistoricalCurrencyRate> getAll() {

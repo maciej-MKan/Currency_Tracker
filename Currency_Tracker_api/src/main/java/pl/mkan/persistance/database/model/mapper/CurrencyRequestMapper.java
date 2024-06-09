@@ -5,7 +5,7 @@ import pl.mkan.controller.dto.CurrencyRateRequest;
 import pl.mkan.controller.dto.HistoricalCurrencyRate;
 import pl.mkan.persistance.database.model.CurrencyRequestEntity;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Component
 public class CurrencyRequestMapper {
@@ -19,7 +19,7 @@ public class CurrencyRequestMapper {
         );
     }
 
-    public CurrencyRequestEntity toEntity(CurrencyRateRequest request, LocalDateTime fetchTime, double currencyValue) {
+    public CurrencyRequestEntity toEntity(CurrencyRateRequest request, ZonedDateTime fetchTime, double currencyValue) {
         return new CurrencyRequestEntity(request.currency(), request.name(), fetchTime, currencyValue);
     }
 }
