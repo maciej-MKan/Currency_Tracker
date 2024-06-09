@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.mkan.controller.dto.CurrencyRateRequest;
 import pl.mkan.controller.dto.HistoricalCurrencyRate;
+import pl.mkan.persistance.database.model.CurrencyRequestEntity;
 import pl.mkan.persistance.database.model.mapper.CurrencyRequestMapper;
 import pl.mkan.persistance.database.repository.CurrencyRequestRepository;
 
@@ -19,13 +20,15 @@ public class RequestService {
     private final CurrencyRequestRepository repository;
     private final CurrencyRequestMapper mapper;
 
-    public void saveRequest(CurrencyRateRequest request, double currencyRate) {
+    public CurrencyRequestEntity saveRequest(CurrencyRateRequest request, double currencyRate) {
         log.info("Saving fetched currencyCode currencyValue for request: {}, currencyValue: {}", request, currencyRate);
-        repository.save(mapper.toEntity(request, LocalDateTime.now(), currencyRate));
+        return repository.save(mapper.toEntity(request, LocalDateTime.now(), currencyRate));
     }
 
     public List<HistoricalCurrencyRate> getAll() {
-        return repository.findAll().stream()
+        List<CurrencyRequestEntity> entityList = repository.findAll();
+
+        return entityList.stream()
                 .peek(currencyRequestEntity -> log.info("Found saved request: {}", currencyRequestEntity.toString()))
                 .map(mapper::toDTO)
                 .toList();

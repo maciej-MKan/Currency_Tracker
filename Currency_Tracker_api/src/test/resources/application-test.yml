@@ -1,0 +1,16 @@
+nbp-api:
+  url: http://localhost:9999
+  currency:
+    uri: /api/exchangerates/rates/A/
+  timeout: 5000
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  front: http://localhost:4200
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
