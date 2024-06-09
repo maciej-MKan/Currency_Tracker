@@ -18,10 +18,11 @@ A web application that allows users to check currency values by code from the NB
    ```git clone https://github.com/maciej-MKan/Currency_Tracker```
 2. Navigate to the project directory:
    ```cd Currency_Tracker```
-3. Run Docker Compose to start the application (docker compose is required):
+3. Create an `.env` configuration file in the root directory and fill it as shown in `.env.example`
+4. Run Docker Compose to start the application (docker compose is required):
    ```docker compose up```
-4. Open your browser and navigate to localhost:3000:
-   ```http://localhost:3000```
+5. Open your browser and navigate to localhost:3000:
+
 
 ## API Endpoints
 ### POST /currencies/get-current-currency-value-command
