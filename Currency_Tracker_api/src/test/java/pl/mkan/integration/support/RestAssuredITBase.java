@@ -11,19 +11,13 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import pl.mkan.integration.AbstractIntegrationTest;
 
 public abstract class RestAssuredITBase
-        extends AbstractIntegrationTest
-        implements ControllerTestSupport {
+        extends AbstractIntegrationTest {
 
     @LocalServerPort
     private int serverPort;
 
     @Autowired
     protected ObjectMapper objectMapper;
-
-    @Override
-    public ObjectMapper getObjectMapper() {
-        return objectMapper;
-    }
 
     public RequestSpecification requestSpecification() {
         return RestAssured
