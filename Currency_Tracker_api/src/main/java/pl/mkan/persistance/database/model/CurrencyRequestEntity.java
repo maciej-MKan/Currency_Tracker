@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @EqualsAndHashCode(of = "id")
@@ -20,10 +20,10 @@ public class CurrencyRequestEntity {
     private Long id;
     private String currencyCode;
     private String fetcherName;
-    private LocalDateTime fetchDate;
+    private ZonedDateTime fetchDate;
     private double currencyValue;
 
-    public CurrencyRequestEntity(String currencyCode, String fetcherName, LocalDateTime fetchDate, double currencyValue) {
+    public CurrencyRequestEntity(String currencyCode, String fetcherName, ZonedDateTime fetchDate, double currencyValue) {
         this.currencyCode = currencyCode;
         this.fetcherName = fetcherName;
         this.fetchDate = fetchDate;

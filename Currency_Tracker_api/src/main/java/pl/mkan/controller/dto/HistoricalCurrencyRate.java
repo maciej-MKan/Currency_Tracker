@@ -1,6 +1,6 @@
 package pl.mkan.controller.dto;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
-public record HistoricalCurrencyRate(String currency, String name, LocalDateTime date, double value) {
+public record HistoricalCurrencyRate(String currency, String name, ZonedDateTime date, double value) {
 }

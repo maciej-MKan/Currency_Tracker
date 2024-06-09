@@ -11,7 +11,7 @@ import pl.mkan.persistance.database.model.CurrencyRequestEntity;
 import pl.mkan.persistance.database.model.mapper.CurrencyRequestMapper;
 import pl.mkan.persistance.database.repository.CurrencyRequestRepository;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,12 +37,12 @@ public class RequestServiceTest {
         CurrencyRequestEntity entity = new CurrencyRequestEntity(
                 "EUR",
                 "John Doe",
-                LocalDateTime.now(),
+                ZonedDateTime.now(),
                 4.2923);
 
         when(currencyRequestMapper.toEntity(
                 any(CurrencyRateRequest.class),
-                any(LocalDateTime.class),
+                any(ZonedDateTime.class),
                 anyDouble())
         ).thenCallRealMethod();
 
@@ -62,14 +62,14 @@ public class RequestServiceTest {
         CurrencyRequestEntity entity1 = new CurrencyRequestEntity(
                 "EUR",
                 "John Doe",
-                LocalDateTime.now(),
+                ZonedDateTime.now(),
                 4.2923
         );
 
         CurrencyRequestEntity entity2 = new CurrencyRequestEntity(
                 "USD",
                 "Jane Doe",
-                LocalDateTime.now(),
+                ZonedDateTime.now(),
                 3.7123
         );
 
