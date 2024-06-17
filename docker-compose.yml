@@ -38,11 +38,9 @@ services:
   frontend-angular:
     build:
       context: ./Currency_Tracker_frontend
-      args:
-        VITE_BACKEND_URI: "http://localhost:8089"
       dockerfile: Dockerfile
     environment:
-      apiUrl: "http://localhost:8089"
+      API_URL: "http://localhost:8089/currencies"
     depends_on:
       - backend-java
     ports: 
