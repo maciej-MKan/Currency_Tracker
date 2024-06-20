@@ -10,13 +10,20 @@ server:
     context-path: /
   front: http://localhost:4200
 
+db:
+  url:
+  port:
+  name:
+  user:
+  password:
+
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://db:5432/currency
-    username:
-    password:
+    url: jdbc:postgresql://${db.url}:${db.port}/${db.name}
+    username: ${db.user}
+    password: ${db.password}
     hikari:
       idle-timeout: 10000
       connectionTimeout: 20000

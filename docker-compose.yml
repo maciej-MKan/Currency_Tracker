@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     environment:
-      POSTGRES_DB: "currency"
+      POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
     ports:
@@ -32,8 +32,11 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "docker"
       server.front: "http://localhost:3000"
-      spring.datasource.username: ${DB_USER}
-      spring.datasource.password: ${DB_PASS}
+      db.url: "db"
+      db.port: "5432"
+      db.name: ${DB_NAME}
+      db.user: ${DB_USER}
+      db.password: ${DB_PASS}
 
   frontend-angular:
     build:
