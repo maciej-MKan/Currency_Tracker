@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /usr/src/app
 
@@ -16,4 +16,6 @@ RUN npm install --force
 
 EXPOSE 4200
 
-ENTRYPOINT ["ng", "serve", "--host", "0.0.0.0"]
+RUN ["chmod", "+x", "./config_and_run.sh"]
+
+ENTRYPOINT ["/bin/sh", "-c", "./config_and_run.sh"]

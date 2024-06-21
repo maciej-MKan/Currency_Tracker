@@ -7,3 +7,6 @@ dist
 .git
 
 .angular
+
+../assets
+../assets/*
